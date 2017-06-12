@@ -1,0 +1,57 @@
+FORMAT: 1A
+HOST: http://farmanimals.apiblueprint.org/
+
+# Farm Animals API
+
+Farm Animals is a simple API allowing consumers to view information about the animals on the farm.
+
+## Questions Collection [/animals{?type}]
+
+### List All Animals [GET]
+
+Retrieve a list of all farm animals. Provide a type filter to pull out only animals of that type.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "type": "Pig",
+                "birth-date": "2015-08-05T08:40:51.620Z",
+                "name": "Pinky"
+            },
+            {
+                "id": "6",
+                "type": "Duck",
+                "birth-date": "2016-08-05T08:40:51.620Z",
+                "name": "Donald"
+            }
+        ]
+
+### Create a New Animal [POST]
+
+You may create your own animal using this action. It takes a JSON
+object containing an animal.
+
++ Request (application/json)
+
+        {
+            "type": "Pig",
+            "birth-date": "2017-04-05T08:40:51.620Z",
+            "name": "Alphy"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /animals/6
+
+    + Body
+
+            {
+                "id": "6",
+                "type": "Pig",
+                "birth-date": "2017-04-05T08:40:51.620Z",
+                "name": "Alphy"
+            }
